@@ -9,7 +9,7 @@ async def check_squats(name:str):
     mp_drawing = mp.solutions.drawing_utils
     mp_pose = mp.solutions.pose
 
-    cap = cv2.VideoCapture(f"{name}")
+    cap = cv2.VideoCapture(f"cvmedia/{name}")
     error = (cap.get(4)/100) * 5 # Степень ошибки = 5
      
     count = 0

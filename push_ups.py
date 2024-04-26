@@ -9,7 +9,7 @@ async def check(name:str):
     mp_pose = mp.solutions.pose 
 
 
-    cap = cv2.VideoCapture(f"{name}") 
+    cap = cv2.VideoCapture(f"cvmedia/{name}") 
     
     count = 0 
     position = "up" 

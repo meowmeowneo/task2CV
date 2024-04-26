@@ -8,7 +8,7 @@ async def check_pull(name:str):
     mp_drawing = mp.solutions.drawing_utils
     mp_pose = mp.solutions.pose
     
-    cap = cv2.VideoCapture(f"{name}")
+    cap = cv2.VideoCapture(f"cvmedia/{name}")
      
     count = -1
     position = None

@@ -14,12 +14,12 @@ app=FastAPI()
 @app.post("/pushUps")
 async def push_ups(id:int, competition:str, video: UploadFile = File(...)):
     try:
-        with open(f"{video.filename}", "wb") as buffer:
+        with open(f"cvmedia/{video.filename}", "wb") as buffer:
             shutil.copyfileobj(video.file, buffer)
 
         count =  await check(video.filename)
 
-        os.remove(video.filename)
+        os.remove(f"cvmedia/{video.filename}")
         return {"result":{"id":id,"competition":competition,"count":count}}
     except Exception as e:
         return {"error": f"Произошла ошибка при загрузке файла: {str(e)}"}
@@ -28,12 +28,12 @@ async def push_ups(id:int, competition:str, video: UploadFile = File(...)):
 @app.post("/squats")
 async def squats(video: UploadFile = File(...)):
     try:
-        with open(f"{video.filename}", "wb") as buffer:
+        with open(f"cvmedia/{video.filename}", "wb") as buffer:
             shutil.copyfileobj(video.file, buffer)
 
         count = await check_squats(video.filename)
 
-        os.remove(video.filename)
+        os.remove(f"cvmedia/{video.filename}")
         return count
     except Exception as e:
         return {"error": f"Произошла ошибка при загрузке файла: {str(e)}"}
@@ -42,12 +42,12 @@ async def squats(video: UploadFile = File(...)):
 @app.post("/climber")
 async def climber(video: UploadFile = File(...)):
     try:
-        with open(f"{video.filename}", "wb") as buffer:
+        with open(f"cvmedia/{video.filename}", "wb") as buffer:
             shutil.copyfileobj(video.file, buffer)
 
         count = await check_climber(video.filename)
 
-        os.remove(video.filename)
+        os.remove(f"cvmedia/{video.filename}")
         return count
     except Exception as e:
         return {"error": f"Произошла ошибка при загрузке файла: {str(e)}"}
@@ -55,12 +55,12 @@ async def climber(video: UploadFile = File(...)):
 @app.post("/bicycle")
 async def bicycle(video: UploadFile = File(...)):
     try:
-        with open(f"{video.filename}", "wb") as buffer:
+        with open(f"cvmedia/{video.filename}", "wb") as buffer:
             shutil.copyfileobj(video.file, buffer)
 
         count = await check_bicycle(video.filename)
 
-        os.remove(video.filename)
+        os.remove(f"cvmedia/{video.filename}")
         return count
     except Exception as e:
         return {"error": f"Произошла ошибка при загрузке файла: {str(e)}"}
@@ -68,12 +68,12 @@ async def bicycle(video: UploadFile = File(...)):
 @app.post("/pullUps")
 async def pull_ups(video: UploadFile = File(...)):
     try:
-        with open(f"{video.filename}", "wb") as buffer:
+        with open(f"cvmedia/{video.filename}", "wb") as buffer:
             shutil.copyfileobj(video.file, buffer)
 
         count = await check_pull(video.filename)
 
-        os.remove(video.filename)
+        os.remove(f"cvmedia/{video.filename}")
         return count
     except Exception as e:
         return {"error": f"Произошла ошибка при загрузке файла: {str(e)}"}
